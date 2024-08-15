@@ -25,7 +25,7 @@ import {
   
   export const GET = async (req: Request) => {
     const payload: ActionGetResponse = {
-      title: "Mint XueDAO NFT",
+      title: "XueDAO NFT",
       icon: new URL(
         "/nft.png",
         new URL(req.url).origin
@@ -40,19 +40,19 @@ import {
             label: "mint",
             href: "/api/mint?name={name}&symbol={symbol}&url={url}",
             parameters: [
-              // {amount} input field
+              // {name} input field
               {
                 name: "name",
                 label: "Name",
                 type: "text",
               },
-              // {message} input field
+              // {symbol} input field
               {
                 name: "symbol",
                 label: "Symbol",
                 type: "text",
               },
-              // {address} input field
+              // {url} input field
               {
                 name: "url",
                 label: "URL",
@@ -85,8 +85,6 @@ import {
         });
       }
 
-      //
-
       // const connection = new Connection(providerUrl);
       const connection = new Connection(clusterApiUrl('devnet'), {
         commitment: "confirmed",
@@ -102,12 +100,10 @@ import {
         metadata,
       )[0];
     
-    
       const nftMetadata = PublicKey.findProgramAddressSync(
         [Buffer.from("metadata"), metadata.toBuffer(), mint.publicKey.toBuffer()],
         metadata,
       )[0];
-    
   
       const accounts = {
         authority: account,
@@ -139,7 +135,6 @@ import {
         .createSingleNft(name, symbol,url)
         .accounts({ ...accounts })
         .instruction();
-  
   
       // Create a transaction and add the transfer instruction
       const transaction = new Transaction().add(claimInstruction);
