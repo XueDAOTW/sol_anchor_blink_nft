@@ -134,6 +134,7 @@ import {
       const claimInstruction = await program.methods
         .createSingleNft(name, symbol,url)
         .accounts({ ...accounts })
+        .signers([mint])
         .instruction();
   
       // Create a transaction and add the transfer instruction
