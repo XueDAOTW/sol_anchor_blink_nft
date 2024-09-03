@@ -16,8 +16,8 @@
 
 ### 3. Prepare Action Files
 - Copy your `action_example.json` and `action_example.ts` files into the `idl` directory.
-  ```bash
-      cp target/idl/action_example.json ./app/my-app/app/idls/action_example.json
+    ```bash
+    cp target/idl/action_example.json ./app/my-app/app/idls/action_example.json
     cp target/types/action_example.ts ./app/my-app/app/idls/action_example.ts
     ```
 
